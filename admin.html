@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — Spark Soul</title>
+  <link rel="icon" href="assets/seal.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.png" alt="Spark Soul" width="560" height="335" /><small>Admin</small>
+      </a>
+      <div style="display:flex; gap:8px;">
+        <a href="index.html" class="btn btn--ghost btn--sm" target="_blank">View shop ↗</a>
+        <button id="logoutBtn" class="btn btn--ghost btn--sm" hidden>Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main container">
+    <!-- Not configured -->
+    <section id="setupView" class="panel login-panel" hidden>
+      <h1>Almost there</h1>
+      <p class="lead">The database isn't connected yet. Open <code>js/config.js</code> and fill in <code>supabaseUrl</code> and <code>supabaseKey</code>. The steps are in <code>README.md</code>.</p>
+    </section>
+
+    <!-- Login -->
+    <section id="loginView" class="panel login-panel" hidden>
+      <h1>Welcome back</h1>
+      <p class="lead">Log in to add pieces, update prices and mark what's sold out.</p>
+      <div id="loginMsg"></div>
+      <form id="loginForm">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="username" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" required />
+        </div>
+        <button class="btn btn--block" type="submit">Log in</button>
+      </form>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashView" hidden>
+      <div class="toolbar">
+        <h1>Your pieces <span id="count"></span></h1>
+        <input type="search" id="search" placeholder="Search pieces…" aria-label="Search pieces" />
+        <button id="addBtn" class="btn">+ Add a piece</button>
+      </div>
+      <div id="dashMsg"></div>
+      <div id="adminList" class="admin-list"></div>
+    </section>
+  </main>
+
+  <dialog id="formModal" class="dialog form-modal">
+    <form id="productForm">
+      <h2 id="formTitle">Add a piece</h2>
+      <div id="formMsg"></div>
+
+      <div class="field">
+        <label>Photos <span class="field__hint">(up to 3)</span></label>
+        <div class="photo-slots" id="photoSlots"></div>
+        <p class="field__hint">Photos are cropped to 4:5 (portrait) automatically. The first photo is the main one on the website.</p>
+      </div>
+
+      <div class="field">
+        <label for="fName">Name</label>
+        <input id="fName" required maxlength="120" placeholder="e.g. Boho Beaded Sling" />
+      </div>
+
+      <div class="field">
+        <label for="fCategory">Category</label>
+        <select id="fCategory" required></select>
+        <input id="fCategoryOther" maxlength="60" placeholder="Type the new category, e.g. Keychains" hidden />
+      </div>
+
+      <div class="field-row field-row--3">
+        <div class="field">
+          <label for="fPrice">Price (<span data-currency>₹</span>)</label>
+          <input id="fPrice" type="number" min="0" step="1" required placeholder="449" />
+        </div>
+        <div class="field">
+          <label for="fBulkPrice">Bulk price per piece (<span data-currency>₹</span>)</label>
+          <input id="fBulkPrice" type="number" min="0" step="1" placeholder="Optional, e.g. 399" />
+        </div>
+        <div class="field">
+          <label for="fBulkMin">Bulk minimum (pieces)</label>
+          <input id="fBulkMin" type="number" min="2" step="1" value="12" />
+        </div>
+      </div>
+      <p class="field__hint field__hint--block">Leave the bulk price empty if there's no bulk deal. When filled, the website shows "₹399 each for 12+ pieces".</p>
+
+      <div class="field">
+        <label for="fDesc">Description</label>
+        <textarea id="fDesc" maxlength="1500" placeholder="Materials, size, colours, care…"></textarea>
+      </div>
+
+      <div class="field-row">
+        <div>
+          <label class="check"><input type="checkbox" id="fStock" checked /> In stock</label>
+          <label class="check"><input type="checkbox" id="fFeatured" /> Show first</label>
+        </div>
+        <div class="field">
+          <label for="fSort">Display order</label>
+          <input id="fSort" type="number" step="1" value="0" />
+          <span class="field__hint">Lower numbers show first.</span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn--ghost" data-close>Cancel</button>
+        <button type="submit" class="btn" id="saveBtn">Save piece</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

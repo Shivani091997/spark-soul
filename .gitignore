@@ -1,0 +1,7 @@
+.claude/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# setup file with the admin email filled in (kept private)
+supabase/setup-ready.sql

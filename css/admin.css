@@ -1,0 +1,83 @@
+/* Spark Soul — admin page (loads after style.css) */
+.admin-body { min-height: 100vh; background: var(--paper); }
+.admin-header { background: var(--cream); border-bottom: 1px solid var(--line); }
+.admin-header .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; }
+.admin-header .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.admin-header .brand img { height: 48px; width: auto; }
+.admin-header .brand small { font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--maroon); font-weight: 500; }
+.btn--ghost { background: transparent; color: var(--ink); }
+.btn--ghost::after { background: var(--ink); }
+.btn--ghost:hover { color: var(--cream); }
+.admin-main { padding: 48px 0 96px; }
+
+.panel { background: var(--cream); border: 1.5px solid var(--ink); padding: 40px; }
+.login-panel { max-width: 440px; margin: 48px auto; box-shadow: 10px 10px 0 var(--sun); }
+.login-panel h1 { font-size: 2.8rem; margin-bottom: 6px; }
+.login-panel .lead { color: var(--ink-soft); margin-bottom: 28px; }
+code { font-family: ui-monospace, Consolas, monospace; font-size: .88em; background: var(--paper); padding: .1em .35em; }
+
+.field { display: grid; gap: 6px; margin-bottom: 18px; }
+.field label { font-weight: 500; font-size: .92rem; }
+.field input, .field textarea, .field select { font: inherit; color: inherit; min-height: 48px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 2px; background: #fff; }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--ink); }
+.field select { appearance: none; cursor: pointer; padding-right: 40px; background: #fff url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Cpath d=%27M6 9l6 6 6-6%27 fill=%27none%27 stroke=%27%231E1B16%27 stroke-width=%272%27/%3E%3C/svg%3E") right 12px center / 18px no-repeat; }
+.field select + input { margin-top: 8px; }
+.field__hint--block { display: block; margin: -8px 0 18px; }
+.field textarea { min-height: 110px; resize: vertical; }
+.field__hint { font-size: .82rem; color: var(--ink-soft); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field-row--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.field input, .field select, .field textarea { width: 100%; min-width: 0; }
+.field-row--3 label { min-height: 2.6em; display: flex; align-items: flex-end; }
+.check { display: flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 500; cursor: pointer; }
+.check input { width: 20px; height: 20px; accent-color: var(--ink); }
+
+.msg { padding: 10px 14px; font-size: .92rem; margin-bottom: 16px; border: 1px solid; }
+.msg-error { background: #FBEAEA; color: var(--maroon); border-color: #EBC2C2; }
+.msg-ok { background: #EEF2E2; color: var(--olive); border-color: #D6DDBE; }
+
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 28px; }
+.toolbar h1 { font-size: 3rem; margin-right: auto; }
+.toolbar h1 span { font: 400 1rem var(--sans); color: var(--ink-soft); }
+.toolbar input[type="search"] { font: inherit; min-height: 48px; padding: 0 16px; border: 1.5px solid var(--line); background: #fff; min-width: 220px; }
+
+.admin-list { display: grid; gap: 10px; }
+.admin-item { display: grid; grid-template-columns: 72px 1fr auto; gap: 18px; align-items: center; background: var(--cream); border: 1px solid var(--line); padding: 10px 14px 10px 10px; }
+.admin-item img { width: 72px; height: 90px; object-fit: cover; }
+.admin-item h3 { font-size: 1.5rem; }
+.admin-item .meta { color: var(--ink-soft); font-size: .9rem; }
+.admin-item .tags { display: flex; gap: 6px; margin-top: 4px; }
+.tag { font-size: .75rem; font-weight: 500; padding: 2px 10px; background: var(--paper); }
+.tag-sold { background: var(--ink); color: var(--cream); }
+.tag-feat { background: var(--sun); }
+.admin-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.icon-btn { min-height: 40px; padding: 0 14px; border: 1.5px solid var(--line); background: transparent; font: 500 .85rem var(--sans); cursor: pointer; }
+.icon-btn:hover { border-color: var(--ink); }
+.icon-btn.danger:hover { border-color: var(--maroon); color: var(--maroon); }
+
+.dialog { border: 0; padding: 0; width: min(620px, 100% - 32px); max-height: calc(100dvh - 32px); background: var(--cream); color: var(--ink); }
+.dialog::backdrop { background: rgba(30, 27, 22, .55); }
+.form-modal form { padding: 36px; }
+.form-modal h2 { font-size: 2.4rem; margin-bottom: 20px; }
+/* 3 photo slots, 4:5 like the website */
+.photo-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.slot { position: relative; aspect-ratio: 4 / 5; border: 1.5px dashed var(--line); background: #fff; display: grid; place-items: center; overflow: hidden; transition: border-color .2s; }
+.slot:hover { border-color: var(--ink); }
+.slot.has-photo { border-style: solid; }
+.slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.slot__empty { display: grid; justify-items: center; font-size: 2rem; line-height: 1; color: var(--ink-soft); }
+.slot__empty small { font-size: .78rem; margin-top: 6px; }
+.slot__pick { position: absolute; inset: 0; cursor: pointer; }
+.slot__main { position: absolute; left: 6px; top: 6px; padding: 2px 8px; background: var(--sun); font-size: .72rem; font-weight: 500; }
+.slot__remove { position: absolute; right: 6px; top: 6px; z-index: 2; width: 32px; height: 32px; border: 0; border-radius: 50%; background: rgba(30, 27, 22, .8); color: #fff; font-size: 1.2rem; line-height: 1; cursor: pointer; }
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
+
+@media (max-width: 640px) {
+  .panel, .form-modal form { padding: 24px; }
+  .admin-item { grid-template-columns: 56px 1fr; }
+  .admin-item img { width: 56px; height: 56px; }
+  .admin-actions { grid-column: 1 / -1; justify-content: flex-start; }
+  .field-row, .field-row--3 { grid-template-columns: 1fr; }
+  .field-row--3 label { min-height: 0; }
+  .toolbar input[type="search"] { flex: 1; min-width: 0; }
+}
