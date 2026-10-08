@@ -159,6 +159,11 @@
     start();
   }
 
+  // ---- Make saving images harder: no right-click / long-press menu and no dragging on pictures ----
+  const protectedArea = "img, svg, .card__media, .hero__art, .modal__media, .map";
+  document.addEventListener("contextmenu", (e) => { if (e.target.closest(protectedArea)) e.preventDefault(); });
+  document.addEventListener("dragstart", (e) => { if (e.target.closest("img")) e.preventDefault(); });
+
   // ---- Header changes once you scroll ----
   const header = document.getElementById("header");
   const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
