@@ -230,11 +230,13 @@ p { margin: 0; }
 .modal[open] { animation: modal-in .5s var(--ease); }
 @keyframes modal-in { from { opacity: 0; transform: translateY(30px); } }
 .modal__grid { display: grid; grid-template-columns: 1fr 1fr; }
-.modal__media { display: grid; align-content: start; gap: 8px; }
-.modal__img { width: 100%; aspect-ratio: 1; object-fit: cover; }
-.modal__thumbs { display: flex; gap: 8px; padding: 0 8px 8px; }
+.modal__media { position: relative; overflow: hidden; background: var(--paper); min-height: min(460px, 60vw); }
+/* photo fills the whole left side, however tall the text column is */
+.modal__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; } /* whole photo (logo included) */
+.modal__bg { position: absolute; inset: -30px; width: calc(100% + 60px); height: calc(100% + 60px); max-width: none; object-fit: cover; filter: blur(22px) brightness(.97); transform: scale(1.1); } /* soft blurred fill around it */
+.modal__thumbs { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 8px; }
 .modal__thumbs:empty { display: none; }
-.modal__thumb { width: 64px; aspect-ratio: 1; padding: 0; border: 2px solid transparent; background: none; cursor: pointer; opacity: .65; transition: opacity .2s, border-color .2s; }
+.modal__thumb { width: 60px; aspect-ratio: 1; padding: 0; border: 2px solid #fff; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.25); cursor: pointer; opacity: .8; transition: opacity .2s, border-color .2s; }
 .modal__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .modal__thumb:hover, .modal__thumb.is-active { opacity: 1; border-color: var(--ink); }
 .modal__info { padding: 44px 36px 36px; display: flex; flex-direction: column; gap: 12px; }
@@ -270,6 +272,8 @@ p { margin: 0; }
   .card__name { font-size: 1.4rem; }
   .card__order { justify-self: stretch; }
   .modal__grid { grid-template-columns: 1fr; }
+  .modal__media { min-height: 0; aspect-ratio: 1; }
+  .modal__thumb { width: 48px; }
   .modal__info { padding: 24px; }
   .footer__inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .footer__links { justify-content: center; }
