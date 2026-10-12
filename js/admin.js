@@ -219,10 +219,10 @@
     state.slots = state.slots.filter(Boolean).slice(0, MAX_PHOTOS);
   }
 
-  // Crop to 4:5 (portrait, centred) and shrink to max 1200×1500 so photos load fast and match the site.
+  // Crop to a centred square and shrink to max 1200×1200 so photos load fast and match the site.
   async function cropAndCompress(file) {
     const bitmap = await createImageBitmap(file);
-    const ratio = 4 / 5;
+    const ratio = 1;
     let sw = bitmap.width, sh = bitmap.height, sx = 0, sy = 0;
     if (sw / sh > ratio) { sw = Math.round(sh * ratio); sx = Math.round((bitmap.width - sw) / 2); }
     else { sh = Math.round(sw / ratio); sy = Math.round((bitmap.height - sh) / 2); }

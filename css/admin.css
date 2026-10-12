@@ -43,7 +43,7 @@ code { font-family: ui-monospace, Consolas, monospace; font-size: .88em; backgro
 
 .admin-list { display: grid; gap: 10px; }
 .admin-item { display: grid; grid-template-columns: 72px 1fr auto; gap: 18px; align-items: center; background: var(--cream); border: 1px solid var(--line); padding: 10px 14px 10px 10px; }
-.admin-item img { width: 72px; height: 90px; object-fit: cover; }
+.admin-item img { width: 72px; height: 72px; object-fit: cover; }
 .admin-item h3 { font-size: 1.5rem; }
 .admin-item .meta { color: var(--ink-soft); font-size: .9rem; }
 .admin-item .tags { display: flex; gap: 6px; margin-top: 4px; }
@@ -61,7 +61,7 @@ code { font-family: ui-monospace, Consolas, monospace; font-size: .88em; backgro
 .form-modal h2 { font-size: 2.4rem; margin-bottom: 20px; }
 /* 3 photo slots, 4:5 like the website */
 .photo-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.slot { position: relative; aspect-ratio: 4 / 5; border: 1.5px dashed var(--line); background: #fff; display: grid; place-items: center; overflow: hidden; transition: border-color .2s; }
+.slot { position: relative; aspect-ratio: 1; border: 1.5px dashed var(--line); background: #fff; display: grid; place-items: center; overflow: hidden; transition: border-color .2s; }
 .slot:hover { border-color: var(--ink); }
 .slot.has-photo { border-style: solid; }
 .slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }

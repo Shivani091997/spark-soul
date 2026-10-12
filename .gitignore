@@ -5,3 +5,6 @@ Thumbs.db
 
 # setup file with the admin email filled in (kept private)
 supabase/setup-ready.sql
+
+# working files, not part of the website
+product-suggestions.jpg

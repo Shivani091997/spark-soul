@@ -41,7 +41,7 @@
   const bulkText = (p) => `Hi ${cfg.businessName}! I'd like a bulk order of "${p.name}" (${p.bulk_min || 12}+ pieces). Please share the details.`;
   const pageLink = (p) => `${location.origin}${location.pathname}#p-${p.id}`;
   const orderText = (p) => p.in_stock
-    ? `Hi ${cfg.businessName}! I'd like to order:\n\n*${p.name}*\nPrice: ${formatPrice(p.price)}\n${pageLink(p)}\n\nPlease share availability and delivery details.`
+    ? `Hi ${cfg.businessName}! I'd like to order:\n\n*${p.name}*\nPrice: ${formatPrice(p.price)}\n${pageLink(p)}\n\nPlease share availability and the shipping charge for my area.`
     : `Hi ${cfg.businessName}! Will "${p.name}" be back in stock?`;
 
   async function loadProducts() {
@@ -107,7 +107,7 @@
     bulkBtn.href = waLink(bulkText(p));
     document.getElementById("modalCat").textContent = p.category;
     document.getElementById("modalName").textContent = p.name;
-    document.getElementById("modalPrice").textContent = formatPrice(p.price) + (p.in_stock ? "" : " · Sold out");
+    document.getElementById("modalPrice").textContent = formatPrice(p.price) + (p.in_stock ? " + shipping" : " · Sold out");
     document.getElementById("modalDesc").textContent = p.description || "";
     const order = document.getElementById("modalOrder");
     order.textContent = p.in_stock ? "Order on WhatsApp" : "Ask for restock";
