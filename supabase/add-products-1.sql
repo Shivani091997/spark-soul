@@ -21,8 +21,8 @@ v (sort_order, name, category, price, bulk_price, description, files) as (values
   (5, 'Two-Tone Braided Phone Sling', 'Mobile Slings', 180, 150,
    'A classic two-colour braided crossbody phone strap with a soft tassel and metal hook. Light, comfortable and easy to style every day. Colours: blue, wine, green, pink and maroon.',
    array['p5-1.jpg','p5-2.jpg']),
-  (6, 'Chunky Braid Phone Sling', 'Mobile Slings', 180, 150,
-   'A thick, soft chunky-braid crossbody phone strap with a strong metal hook. The pastel rainbow one comes with an evil-eye charm. Bold and comfy for everyday use. Colours: pastel rainbow, navy-white and blue-sky-white.',
+  (6, 'Yarn Braid Phone Sling', 'Mobile Slings', 180, 150,
+   'A thick, soft braided yarn crossbody phone strap with a strong metal hook. The pastel rainbow one comes with an evil-eye charm. Bold and comfy for everyday use. Colours: pastel rainbow, navy-white and blue-sky-white.',
    array['p6-1.jpg','p6-2.jpg'])
 )
 insert into public.products
