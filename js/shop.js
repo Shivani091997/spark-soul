@@ -96,7 +96,6 @@
     const list = photos(p).length ? photos(p) : [image(p)];
     img.src = list[0];
     img.alt = p.name;
-    document.getElementById("modalBg").src = list[0];
     document.getElementById("modalThumbs").innerHTML = list.length > 1
       ? list.map((u, i) => `<button type="button" class="modal__thumb${i ? "" : " is-active"}" data-src="${escapeHtml(u)}" aria-label="Photo ${i + 1}"><img src="${escapeHtml(u)}" alt="" /></button>`).join("")
       : "";
@@ -125,7 +124,6 @@
     const thumb = e.target.closest(".modal__thumb");
     if (!thumb) return;
     document.getElementById("modalImg").src = thumb.dataset.src;
-    document.getElementById("modalBg").src = thumb.dataset.src;
     modal.querySelectorAll(".modal__thumb").forEach((b) => b.classList.toggle("is-active", b === thumb));
   });
   filtersEl.addEventListener("click", (e) => {
